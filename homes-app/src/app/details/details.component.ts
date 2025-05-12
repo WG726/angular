@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housing-location';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   template: `
     <article>
       <img class="listing-photo" [src]="housingLocation?.photo" alt="Photo of location."/>
@@ -36,7 +37,12 @@ export class DetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute); // getting the current route information
   housingService: HousingService = inject(HousingService);
   housingLocation: HousingLocation | undefined;
-
+  applyForm = new FormGroup({ // collection of form controls that make up a form
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  });
+  
   constructor() {
     const housingLocationId = Number(this.route.snapshot.params['id']);
     this.housingLocation = this.housingService.getHousingLocatinById(housingLocationId);
