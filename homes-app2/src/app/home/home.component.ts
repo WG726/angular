@@ -15,7 +15,9 @@ import { HousingLocation } from '../housing-location';
       </form>
     </section>
     <section class="results">
-      <app-housing-location></app-housing-location>
+      <app-housing-location *ngFor="let housingLocation of housingLocationList" [housingLocation]="housingLocation"></app-housing-location>
+      <!-- above we use "*ngFor" to iterate over the housingLocationList variable in the HomeComponent -->
+      <!-- above we use [housingLocation] (name of variable inside child component [app-housing-location]) and pass the data as input -->
     </section>
   `,
   styleUrls: ['./home.component.css']
