@@ -22,3 +22,4 @@
 # Angular CLI Commands
 `ng serve` serves up the application locally
 `ng generate component <name> --standalone --inline-template` creates a new component of the name <name> "--standalone" will set standalone to be true "--inline-template" will let their be an inline template in the component
+`ng generate interface <interfaceName>` creates an interface with <interfaceName>
