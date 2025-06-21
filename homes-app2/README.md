@@ -25,3 +25,4 @@
 `ng g c <name> --standalone --inline-template` same as above
 `ng generate interface <interfaceName>` creates an interface with <interfaceName>
 `ng g s <name>` creates a service called <name>, "s" stands for service
+`json-server --watch db.json` starting up a json server locally for data
