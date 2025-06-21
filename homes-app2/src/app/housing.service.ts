@@ -9,12 +9,16 @@ export class HousingService {
   
   constructor() { }
 
-  getAllHousingLocations() : HousingLocation[] {
-    return this.housingLocationList;
+  async getAllHousingLocations() : Promise<HousingLocation[]> {
+    // return this.housingLocationList; <-- old
+    const data = await fetch(this.url);
+    return await data.json() ?? [];
   }
 
-  getHousingLocationById(id: Number) : HousingLocation | undefined {
-    return this.housingLocationList.find(housingLocation => housingLocation.id === id);
+  async getHousingLocationById(id: Number) : Promise<HousingLocation | undefined> {
+    // return this.housingLocationList.find(housingLocation => housingLocation.id === id); <-- old
+    const data = await fetch(`${this.url}/${id}`)
+    return await data.json() ?? {};
   }
 
   submitApplication(firstName: string, lastName: string, email: string) {
