@@ -1,4 +1,4 @@
-Practice working with Angular
+## Practice working with Angular
 
 # Angular CLI Commands
 `ng serve`: serves up the application locally
@@ -14,3 +14,8 @@ Practice working with Angular
 `npm install -g json-server`: installing json server
 
 `json-server --watch db.json`: starting up a json server locally for data
+
+# New Angular Project
+1. Create new angular project: `ng new <name-of-project>`
+    - use kebab case "my-angular-app"
+    
