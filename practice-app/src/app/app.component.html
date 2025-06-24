@@ -7,3 +7,7 @@
 @if (isSubscribed) {
   <button class="subscribe" disabled>Subscribed</button>
 }
+
+@for (mark of marks; track $index) {
+  <div>{{ mark | grade }}</div>
+}
