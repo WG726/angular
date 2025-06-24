@@ -8,7 +8,7 @@ describe("CalcService", () => { // <- description of test group
   let calc: CalcService;
 
   beforeEach(() => { // basically like constructor for the Test Suite
-    console.log("Before each is called.");
+    // console.log("Before each is called.");
     // shared = new SharedService(); // <- manually creating instances of services not using dependency injection which is better.
     // calc = new CalcService(shared); // <- manually creating instances of services not using dependency injection which is better.
     shared = jasmine.createSpyObj("SharedService", ["mySharedFunction"]); // <- creating mock service

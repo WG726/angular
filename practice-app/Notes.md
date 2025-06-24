@@ -1,4 +1,21 @@
 # Unit Testing
+## Best Practices
+You want to test user behavior and public interface
+1. Component Logic
+    - Ensure methods work as expected
+    - Input/output bindings behave correctly
+    - State changes under expected conditions
+2. Rendered Output That Matters
+    - Does important text/content appear?
+        - Like error messages, etc.
+    - Does the correct DOM show when toggled/triggered?
+    - Is a button enabled/disabled under certain conditions?
+3. User Interactions
+    - Click buttons
+    - Fill inputs
+    - Simulate events and check results
+    
+## General Knowledge
 - <u>Jasmine</u>: testing <u>*framework*</u> that supports Behavior-Driven Development. Uses Karma to run tests.
 - <u>Karma</u>: default <u>*test runner*</u> for applications created using Angular CLI
     - controls creation of HTML files, opening web browsers, execution of tests and return of test results
