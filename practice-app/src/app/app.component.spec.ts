@@ -1,7 +1,8 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { delay, of } from 'rxjs';
 
 describe('AppComponent', () => { // test-suite
   
@@ -92,10 +93,47 @@ describe('AppComponent', () => { // test-suite
     }, 3000);
 
     flush(); // use this to tell Angular to run all pending timers, whether they be setTimeouts or awaiting API calls, etc.
-    
+
     // tick(3000);
     expect(btnElements[0].nativeElement.textContent).toBe("Subscribed");
     expect(btnElements[0].nativeElement.disabled).toBeTrue();
     // tick(5000);
+  }));
+
+  it('should test the promise', fakeAsync(() => {
+    let counter = 0;
+
+    setTimeout(() => {
+      counter = counter + 2;
+    }, 2000);
+
+    setTimeout(() => {
+      counter = counter + 3;
+    }, 3000);
+
+    Promise.resolve().then(() => {
+      counter = counter + 1;
+    });
+
+    // flush(); // execute all asynchronous operations
+
+    flushMicrotasks();
+    expect(counter).toBe(1);
+
+    tick(2000);
+    expect(counter).toBe(3);
+
+    tick(1000);
+    expect(counter).toBe(6);
+  }));
+
+  it('should test the observable', fakeAsync(() => {
+    let isSubscribed = false;
+    let myObs = of(isSubscribed).pipe(delay(1000)); // delay is uses setTimeout
+    myObs.subscribe(() => {
+      isSubscribed = true;
+    });
+    tick(1000);
+    expect(isSubscribed).toBeTrue();
   }));
 });

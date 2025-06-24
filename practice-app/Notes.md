@@ -30,6 +30,18 @@ You want to test user behavior and public interface
     - test harness that gives access to a component instance and its template
 - Skip specific specs or test suite by putting "x" in front of *"describe"* or in front of *"it"*
 - Focus on specific test suite or spec put "f" in front of *"describe"* or in front of *"it"*
+- Promises also execute before SetTimeout
+    - Promise is a *microtask* and SetTimeout is a *task*
+- Pipe
+    - method used on Observables to compose multiple operators together on the data inside the obserable
+    ```ts
+    const obs = of(1,2,3,4,5);
+    
+    obs.pipe(
+        filter(x => x%2 === 1),  // only odd numbers
+        map(x => x*10))          // multiply each by 10
+        .subscribe(console.log); //Output: 10, 30, 50
+    ```
 
 ## Methods
 - beforeEach(...)
