@@ -14,7 +14,7 @@ describe('AppComponent', () => { // test-suite
     expect(app).toBeTruthy();
   });
 
-  xit(`should have the 'practice-app' title`, () => { // test-spec
+  it(`should have the 'practice-app' title`, () => { // test-spec
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('practice-app');
