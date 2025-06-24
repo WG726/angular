@@ -14,7 +14,7 @@ You want to test user behavior and public interface
     - Click buttons
     - Fill inputs
     - Simulate events and check results
-    
+
 ## General Knowledge
 - <u>Jasmine</u>: testing <u>*framework*</u> that supports Behavior-Driven Development. Uses Karma to run tests.
 - <u>Karma</u>: default <u>*test runner*</u> for applications created using Angular CLI
@@ -38,6 +38,8 @@ You want to test user behavior and public interface
 - afterEach(...)
     - execution block for when code is needed to run after specification
     - example can be calling .verify()
+- flush()
+    - use this to tell Angular to run all pending timers, whether they be setTimeouts or awaiting API calls, etc.
 - .subscribe()
     - method used to listen and react to values usually like a stream of data
     - lets you handle data when it arrives and optionally handle errors and completion

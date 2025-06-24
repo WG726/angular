@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
@@ -50,7 +50,30 @@ describe('AppComponent', () => { // test-suite
     expect(btnElements[0].nativeElement.disabled).toBeFalse();
   });
 
-  it('should render a button with text subscribed and the button should be disabled after clicked', () => { // test-spec
+  // it('should render a button with text subscribed and the button should be disabled after clicked', (done: DoneFn) => { // need to use the DoneFn (DoneFunction) here because there are asynchronous things happening. The expects are inside a setTimeout and without the DoneFunction, the test will not be accurate because the tests will not run.
+  //   component.isSubscribed = false;
+  //   fixture.detectChanges();
+  //   let btnElements = el.queryAll(By.css('.subscribe'));
+    
+  //   // component.btnText = "Subscribe";
+
+  //   btnElements[0].nativeElement.click(); // clicking button in the DOM
+    
+  //   setTimeout(() => {
+  //     console.log("Some other test cases");
+  //     done();
+  //   }, 8000);
+  //   setTimeout(() => {
+  //     fixture.detectChanges();
+
+  //     btnElements = el.queryAll(By.css('.subscribe')); // have to call this again because in this scenario we have two different buttons and only one is in the DOM at a time because of the "@if" block. The first btnElements is pointing to the first one but after the click it is still trying to reference that first button so we need to re-point the variable to get the new button that is in the DOM.
+  //     expect(btnElements[0].nativeElement.textContent).toBe("Subscribed");
+  //     expect(btnElements[0].nativeElement.disabled).toBeTrue();
+  //     // done();
+  //   }, 3000);
+  // });
+
+  it('should render a button with text subscribed and the button should be disabled after clicked', fakeAsync(() => { 
     component.isSubscribed = false;
     fixture.detectChanges();
     let btnElements = el.queryAll(By.css('.subscribe'));
@@ -58,10 +81,21 @@ describe('AppComponent', () => { // test-suite
     // component.btnText = "Subscribe";
 
     btnElements[0].nativeElement.click(); // clicking button in the DOM
-    fixture.detectChanges();
+    
+    setTimeout(() => {
+      console.log("Some other test cases");
+    }, 8000);
 
-    btnElements = el.queryAll(By.css('.subscribe')); // have to call this again because in this scenario we have two different buttons and only one is in the DOM at a time because of the "@if" block. The first btnElements is pointing to the first one but after the click it is still trying to reference that first button so we need to re-point the variable to get the new button that is in the DOM.
+    setTimeout(() => {
+      fixture.detectChanges();
+      btnElements = el.queryAll(By.css('.subscribe')); // have to call this again because in this scenario we have two different buttons and only one is in the DOM at a time because of the "@if" block. The first btnElements is pointing to the first one but after the click it is still trying to reference that first button so we need to re-point the variable to get the new button that is in the DOM.
+    }, 3000);
+
+    flush(); // use this to tell Angular to run all pending timers, whether they be setTimeouts or awaiting API calls, etc.
+    
+    // tick(3000);
     expect(btnElements[0].nativeElement.textContent).toBe("Subscribed");
     expect(btnElements[0].nativeElement.disabled).toBeTrue();
-  });
+    // tick(5000);
+  }));
 });
