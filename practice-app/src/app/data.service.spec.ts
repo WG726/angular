@@ -3,7 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { DataService } from './data.service';
-import { USERS } from './mock-data/user';
+import { USERS } from './mock-data/mock-users';
 
 describe('DataService', () => {
   let service: DataService;
