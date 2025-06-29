@@ -83,3 +83,7 @@ You want to test user behavior and public interface
     - this will do hot-reload and will rerun tests after any changes
     - run: `ng test --no-watch` for no hot reload
 - Create component without test file: `ng g c <name> --skip-tests`
+- Run code coverage report: `ng test --no-watch --code-coverage`
+    - this will give you the report of how much of your code has been tested
+    - there will be a new coverage folder created
+    - usually 70%-80% is the good standard
