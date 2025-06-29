@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { GradePipe } from './grade.pipe';
 import { CommonModule } from '@angular/common';
 import { GradeDirective } from './grade.directive';
+import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GradePipe, CommonModule, GradeDirective],
+  imports: [GradePipe, CommonModule, GradeDirective, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

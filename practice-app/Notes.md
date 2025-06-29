@@ -34,14 +34,18 @@ You want to test user behavior and public interface
     - Promise is a *microtask* and SetTimeout is a *task*
 - Pipe
     - method used on Observables to compose multiple operators together on the data inside the obserable
+    - used to change displayable data
     ```ts
     const obs = of(1,2,3,4,5);
-    
+
     obs.pipe(
         filter(x => x%2 === 1),  // only odd numbers
         map(x => x*10))          // multiply each by 10
         .subscribe(console.log); //Output: 10, 30, 50
     ```
+- Directive
+    - class that allows you to add behavior to DOM elements and/or listen and respond to user events
+    - used for changing DOM elements/ properties
 
 ## Methods
 - beforeEach(...)
@@ -52,6 +56,9 @@ You want to test user behavior and public interface
     - example can be calling .verify()
 - flush()
     - use this to tell Angular to run all pending timers, whether they be setTimeouts or awaiting API calls, etc.
+- `<fixture>`.whenStable()
+    - waits for all pending asynchonronous tasks to complete like a change that triggered async code
+    - example use is when testing routing, you have to wait until the the DOM changes before you expect anything
 - .subscribe()
     - method used to listen and react to values usually like a stream of data
     - lets you handle data when it arrives and optionally handle errors and completion

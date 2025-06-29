@@ -11,3 +11,8 @@
 @for (mark of marks; track $index) {
   <div [appGrade]="mark">{{ mark | grade }}</div>
 }
+
+<hr/>
+<div>
+  <router-outlet></router-outlet>
+</div>

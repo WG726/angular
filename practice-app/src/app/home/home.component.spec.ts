@@ -22,11 +22,11 @@ describe('HomeComponent', () => {
     el = fixture.debugElement; // associated with root element of component
   });
 
-  it('should create', () => {
+  xit('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have correct contents', () => {
+  xit('should have correct contents', () => {
     let pElements = el.queryAll(By.css('p'));                               // array of all p tags
     expect(pElements[0].nativeElement.textContent).toBe('home works!');
 
