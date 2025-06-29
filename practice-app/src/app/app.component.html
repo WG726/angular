@@ -9,5 +9,5 @@
 }
 
 @for (mark of marks; track $index) {
-  <div>{{ mark | grade }}</div>
+  <div [appGrade]="mark">{{ mark | grade }}</div>
 }
