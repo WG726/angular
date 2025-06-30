@@ -89,4 +89,27 @@ Emulated, None, and Shadow DOM
     - The DOM of this component will be wrapped in a inside a shadow DOM and will not consider the styles from global stylesheet
     - *Small note: styles from ViewEncapsulation.None will be present in this shadow dom*
 
+## NgIf Vs. Hidden Property
+Display: None
+- The tag will be gone and the next tag will take its place
+
+Ex.
+```css
+display: none
+```
+
+Visibility: hidden
+- The tag will be there but nothing showing, but the space that it took up will still be there
+Ex.
+```css
+visibility: hidden
+```
+
+### NgIf
+When you use ngIf, the element itself is not loaded into the DOM (HTML will load faster)
+- To viewer, will act like `display: none`
+
+### Hidden Property
+When you use hidden property, the element is loaded into the DOM with the hidden attribute
+- To viewer, will act like `display: none`
 
