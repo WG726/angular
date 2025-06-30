@@ -63,3 +63,30 @@ Disadvantage
 These packages implement the functionality in Angular way instead of JQuery.
 
 - Use this command: `ng add @ng-bootstrap/ng-bootstrap`
+
+## View Encapsulation
+<u>**View Encapsulation**</u>: a behavior in Angular, where component CSS styles are encapsulation into the component's view and don't affect the rest of the application.
+
+### 3 Types of Encapsulation
+Emulated, None, and Shadow DOM
+- You add encapsulation this way into a component:
+```ts
+@Component({
+    selector: 'app-top',
+    templateUrl: '...',
+    styleUrl: '...',
+    encapsulation: ViewEncapsulation.Emulated
+})
+```
+
+- Emulated (default behavior)
+    - Keeps all of the css seperate for each component
+
+- None
+    - Whatever styles you put in this top component, will be reflected in other components
+
+- Shadow DOM
+    - The DOM of this component will be wrapped in a inside a shadow DOM and will not consider the styles from global stylesheet
+    - *Small note: styles from ViewEncapsulation.None will be present in this shadow dom*
+
+
