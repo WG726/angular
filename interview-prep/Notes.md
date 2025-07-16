@@ -113,3 +113,4 @@ When you use ngIf, the element itself is not loaded into the DOM (HTML will load
 When you use hidden property, the element is loaded into the DOM with the hidden attribute
 - To viewer, will act like `display: none`
 
+## Observable Vs. Promise
